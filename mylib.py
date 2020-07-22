@@ -7,6 +7,7 @@ import urllib.request
 #print(os.path.basename(os.path.abspath(__file__))[:-3]) #実行ファイル名抽出
 
 ### my library ###
+
 def introduce(local_version):
     print(os.path.basename(__file__)+' ver '+str(local_version))
     print('Created By : VERSUS.log')
