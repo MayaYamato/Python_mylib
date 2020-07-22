@@ -1,8 +1,18 @@
+import os
 import requests
 import urllib.error
 import urllib.request
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+print(os.path.basename(os.path.abspath(__file__))) #実行ファイル名抽出
+
 ### my library ###
+def introduce(local_version):
+    print(os.path.basename(__file__)+' ver '+str(local_version))
+    print('Created By : VERSUS.log')
+    print('Twitter : @227_VS')
+    print('Blog : https://raspberrypi422.mydns.jp')
+    print('Github : https://github.com/MayaYamato')
 
 def download_file(url,path):
     try:
@@ -20,16 +30,16 @@ def download_content(url,path):
     except urllib.error.URLError as __e:
         pass
 
-def update_check(version,Github_url,path):
+def update_check(local_version,url_version,url_github,path):
     print('Version Checking ... ')
-    with urllib.request.urlopen(Github_url) as response:
+    with urllib.request.urlopen(url_version) as response:
         html = response.read().decode() 
-        exever = html[:-1]
-    if float(exever) - float(version) > 0:
-        print('New Version Released:'+str(exever)+'\n')
+        remote_version = html[:-1]
+    if float(remote_version) - float(local_version) > 0:
+        print('New Version Released:'+str(remote_version)+'\n')
         tmp =input('Do Upgrade? yes or no\n>>')
         if tmp == 'yes':
-            download_content(Github_url,path)
+            download_content(url_github,path)
             print('Download Complete')
         else:
             pass
