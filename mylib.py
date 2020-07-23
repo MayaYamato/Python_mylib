@@ -35,7 +35,6 @@ def update_check(local_version,url_version,url_github):
         remote_version = html[:-1]
     if float(remote_version) - float(local_version) > 0:
         print('New Version Released:'+str(remote_version)+'\n')
-        tmp =input('Do Upgrade? yes or no\n>>')
         if tmp == 'yes':
             download_dir_exe = os.getcwd()+r'\update_exe'
             if not os.path.exists(download_dir_exe):
