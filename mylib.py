@@ -35,15 +35,12 @@ def update_check(local_version,url_version,url_github):
         remote_version = html[:-1]
     if float(remote_version) - float(local_version) > 0:
         print('New Version Released:'+str(remote_version)+'\n')
-        if tmp == 'yes':
-            download_dir_exe = os.getcwd()+r'\update_exe'
-            if not os.path.exists(download_dir_exe):
-                os.makedirs(download_dir_exe)
-            dst_path_exe = os.path.join(download_dir_exe, os.path.basename(os.path.abspath(__file__))[-3]+'.exe')
-            url_download_exe = url_github+r'/'+str(remote_version)+r'/'+os.path.basename(os.path.abspath(__file__))[:-3]+'.exe'
-            download_content(url_download_exe,dst_path_exe)
-            print('Download Complete')
-        else:
-            pass
+        download_dir_exe = os.getcwd()+r'\update_exe'
+        if not os.path.exists(download_dir_exe):
+            os.makedirs(download_dir_exe)
+        dst_path_exe = os.path.join(download_dir_exe, os.path.basename(os.path.abspath(__file__))[-3]+'.exe')
+        url_download_exe = url_github+r'/'+str(remote_version)+r'/'+os.path.basename(os.path.abspath(__file__))[:-3]+'.exe'
+        download_content(url_download_exe,dst_path_exe)
+        print('Download Complete')
     else:
         print('Latest Version\n')
