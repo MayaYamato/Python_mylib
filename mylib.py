@@ -28,7 +28,7 @@ def download_content(url,dst_path):
     except urllib.error.URLError as __e:
         pass
 
-def update_check(local_version,url_version,url_github):
+def update_check(name_software,local_version,url_version,url_github):
     print('Version Checking ... ')
     with urllib.request.urlopen(url_version) as response:
         html = response.read().decode() 
@@ -38,8 +38,9 @@ def update_check(local_version,url_version,url_github):
         download_dir_exe = os.getcwd()+r'\update_exe'
         if not os.path.exists(download_dir_exe):
             os.makedirs(download_dir_exe)
-        dst_path_exe = os.path.join(download_dir_exe, os.path.basename(os.path.abspath(__file__))[-3]+'.exe')
-        url_download_exe = url_github+r'/'+str(remote_version)+r'/'+os.path.basename(os.path.abspath(__file__))[:-3]+'.exe'
+        dst_path_exe = os.path.join(download_dir_exe, name_software+'.zip')
+        url_download_exe = url_github+r'/'+str(remote_version)+r'/'+name_software+'.zip'
+        print(url_download_exe)
         download_content(url_download_exe,dst_path_exe)
         print('Download Complete')
     else:
