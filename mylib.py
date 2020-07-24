@@ -44,4 +44,5 @@ def update_check(name_software,local_version,url_version,url_github):
         download_content(url_download_exe,dst_path_exe)
         print('Download Complete')
     else:
+        print(remote_version )
         print('Latest Version\n')
