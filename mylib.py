@@ -8,9 +8,9 @@ import urllib.request
 def introduce(name_software,local_version):
     print(name_software+' ver '+str(local_version))
     print('Created By : VERSUS.log')
-    print('Twitter : @227_VS')
+    print('Twitter : ※Frozen')
     print('Blog : https://raspberrypi422.mydns.jp')
-    print('Github : https://github.com/kuragevs')
+    print('Github : https://github.com/yukigvs')
 
 def download_file(url,dst_path):
     try:
@@ -32,7 +32,7 @@ def update_check(name_software,local_version,url_version,url_github):
     print('Version Checking ... ')
     with urllib.request.urlopen(url_version) as response:
         html = response.read().decode() 
-        remote_version = html[:-1]
+        remote_version = html
     if float(remote_version) - float(local_version) > 0:
         print('New Version Released:'+str(remote_version)+'\n')
         download_dir_exe = os.getcwd()+r'\update_exe'
@@ -44,5 +44,5 @@ def update_check(name_software,local_version,url_version,url_github):
         download_content(url_download_exe,dst_path_exe)
         print('Download Complete')
     else:
-        print(remote_version )
+        print(float(remote_version))
         print('Latest Version\n')
